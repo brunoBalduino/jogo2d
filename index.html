@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arena Pixel - 2 Players</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-wrapper">
+
+        <header class="game-header">
+            <div>
+                <h1>⚔️ ARENA PIXEL</h1>
+                <p>Duelo de 2 jogadores</p>
+            </div>
+
+            <button id="restartButton">Reiniciar</button>
+        </header>
+
+        <section class="hud">
+
+            <div class="player-hud player1-hud">
+                <div class="player-name">
+                    <span>🔴 PLAYER 1</span>
+                    <span id="p1Score">Cristais: 0</span>
+                </div>
+
+                <div class="health-bar">
+                    <div id="p1Health" class="health-fill"></div>
+                </div>
+
+                <small>WASD + F para atacar</small>
+            </div>
+
+            <div class="round-info">
+                <span id="status">LUTE!</span>
+            </div>
+
+            <div class="player-hud player2-hud">
+                <div class="player-name">
+                    <span>🔵 PLAYER 2</span>
+                    <span id="p2Score">Cristais: 0</span>
+                </div>
+
+                <div class="health-bar">
+                    <div id="p2Health" class="health-fill"></div>
+                </div>
+
+                <small>Setas + L para atacar</small>
+            </div>
+
+        </section>
+
+        <main class="game-container">
+
+            <canvas id="gameCanvas" width="1100" height="600">
+                Seu navegador não suporta Canvas.
+            </canvas>
+
+            <div id="gameOver" class="game-over hidden">
+
+                <div class="game-over-box">
+
+                    <h2 id="winnerText">PLAYER 1 VENCEU!</h2>
+
+                    <p>
+                        A arena tem um novo campeão.
+                    </p>
+
+                    <button id="playAgain">
+                        Jogar novamente
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        <section class="controls">
+
+            <div>
+                <strong>🔴 PLAYER 1</strong>
+                <span>W A S D</span>
+                <span>F — Ataque</span>
+            </div>
+
+            <div>
+                <strong>🔵 PLAYER 2</strong>
+                <span>↑ ← ↓ →</span>
+                <span>L — Ataque</span>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>
+                Cole os três arquivos no mesmo diretório do seu repositório GitHub.
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

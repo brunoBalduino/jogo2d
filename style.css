@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #090b16;
+    --panel: #111528;
+    --panel-light: #1b2038;
+    --text: #f5f7ff;
+    --muted: #9299b8;
+    --red: #ff3d5a;
+    --blue: #3d8bff;
+    --yellow: #ffd447;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #20284b 0%, #090b16 50%, #05060c 100%);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game-wrapper {
+    width: min(1200px, 100%);
+}
+
+/* HEADER */
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.game-header h1 {
+    font-size: clamp(24px, 4vw, 38px);
+    letter-spacing: 2px;
+}
+
+.game-header p {
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #5865f2, #7c4dff);
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* HUD */
+
+.hud {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.player-hud {
+    background: rgba(17, 21, 40, 0.9);
+    border: 1px solid #303752;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.player1-hud {
+    border-color: rgba(255, 61, 90, 0.4);
+}
+
+.player2-hud {
+    border-color: rgba(61, 139, 255, 0.4);
+}
+
+.player-name {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.player-name span:last-child {
+    color: var(--muted);
+}
+
+.health-bar {
+    height: 15px;
+    background: #090b13;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #303752;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    transition: width 0.2s ease;
+}
+
+#p1Health {
+    background: linear-gradient(90deg, #ff1744, #ff6680);
+}
+
+#p2Health {
+    background: linear-gradient(90deg, #2979ff, #6ea7ff);
+}
+
+.player-hud small {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+}
+
+.round-info {
+    text-align: center;
+    font-weight: 900;
+    color: var(--yellow);
+    letter-spacing: 2px;
+}
+
+/* GAME */
+
+.game-container {
+    position: relative;
+    width: 100%;
+    background: #050711;
+    border: 3px solid #303752;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(75, 91, 255, 0.08);
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #111;
+}
+
+/* GAME OVER */
+
+.game-over {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(4, 5, 12, 0.78);
+    backdrop-filter: blur(5px);
+}
+
+.hidden {
+    display: none;
+}
+
+.game-over-box {
+    text-align: center;
+    background: #151a30;
+    border: 2px solid #444d77;
+    border-radius: 20px;
+    padding: 40px;
+    min-width: min(450px, 90%);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.game-over-box h2 {
+    font-size: clamp(25px, 5vw, 45px);
+    margin-bottom: 10px;
+}
+
+.game-over-box p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+/* CONTROLS */
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.controls > div {
+    background: rgba(17, 21, 40, 0.8);
+    border: 1px solid #292f4b;
+    border-radius: 12px;
+    padding: 13px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.controls strong {
+    display: block;
+}
+
+.controls div:first-child strong {
+    color: var(--red);
+}
+
+.controls div:last-child strong {
+    color: var(--blue);
+}
+
+.controls span {
+    color: var(--muted);
+}
+
+footer {
+    text-align: center;
+    color: #686f8e;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .game-header {
+        align-items: flex-start;
+    }
+
+    .hud {
+        grid-template-columns: 1fr;
+    }
+
+    .round-info {
+        order: -1;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    .game-over-box {
+        padding: 25px;
+    }
+}
